@@ -1,11 +1,3 @@
-:root{
-    --beige:#f5eee7;
-    --beige-dark:#d8c5ae;
-    --sage:#b6c2af;
-    --sage-dark:#697463;
-    --gold:#d8b46a;
-}
-
 *{
     margin:0;
     padding:0;
@@ -14,51 +6,29 @@
 
 body{
     min-height:100vh;
-    overflow:hidden;
-    font-family:Georgia, serif;
-
-    background:
-    radial-gradient(circle at top,
-    #ffffff 0%,
-    #f8f4ef 45%,
-    #edf1ea 100%);
-}
-
-.scene{
-    width:100%;
-    height:100vh;
 
     display:flex;
-    flex-direction:column;
     justify-content:center;
     align-items:center;
 
-    position:relative;
-}
-
-/* Światło */
-
-.light{
-
-    position:absolute;
-
-    width:650px;
-    height:650px;
-
-    border-radius:50%;
+    font-family:Georgia, serif;
 
     background:
-    radial-gradient(
-        rgba(255,255,255,.95),
-        rgba(255,255,255,0)
+    linear-gradient(
+        135deg,
+        #f6f0e9,
+        #eef2ea
     );
-
-    filter:blur(70px);
-
-    z-index:0;
 }
 
-/* Koperta */
+.scene{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* KOPERTA */
 
 .envelope-wrapper{
 
@@ -67,10 +37,10 @@ body{
     width:420px;
     height:300px;
 
-    z-index:20;
+    overflow:hidden;
 }
 
-/* Kartka */
+/* KARTKA */
 
 .letter{
 
@@ -80,58 +50,45 @@ body{
     height:220px;
 
     left:50px;
-    top:140px;
+    top:180px;
 
-    background:
-    linear-gradient(
-        180deg,
-        #ffffff,
-        #fcfaf7
-    );
+    background:white;
 
     border-radius:18px;
-
-    border:1px solid rgba(216,180,106,.15);
 
     display:flex;
     justify-content:center;
     align-items:center;
 
     box-shadow:
-    0 25px 60px rgba(0,0,0,.12);
+    0 15px 40px rgba(0,0,0,.12);
 
-    transition:
-    transform 1.6s cubic-bezier(.22,1,.36,1);
+    transition:1.2s;
 
     z-index:3;
 }
 
 .card-content{
     text-align:center;
-    padding:20px;
 }
 
 .card-content h2{
 
-    color:var(--sage-dark);
+    color:#697463;
 
     font-size:2rem;
-
-    line-height:1.3;
-
-    font-weight:500;
 }
 
 .card-content h3{
 
-    margin-top:12px;
+    color:#d8b46a;
 
-    color:var(--gold);
+    margin-top:10px;
 
-    font-size:2.4rem;
+    font-size:2.2rem;
 }
 
-/* Tył */
+/* TYŁ */
 
 .envelope-back{
 
@@ -140,14 +97,14 @@ body{
     width:100%;
     height:100%;
 
-    background:var(--beige-dark);
+    background:#d8c5ae;
 
-    border-radius:0 0 22px 22px;
+    border-radius:0 0 20px 20px;
 
     z-index:2;
 }
 
-/* Przód */
+/* PRZÓD */
 
 .envelope-front{
 
@@ -158,7 +115,7 @@ body{
     width:100%;
     height:72%;
 
-    background:var(--beige);
+    background:#f5eee7;
 
     clip-path:polygon(
         0 100%,
@@ -171,7 +128,7 @@ body{
     z-index:5;
 }
 
-/* Klapka */
+/* KLAPKA */
 
 .envelope-flap{
 
@@ -188,115 +145,72 @@ body{
         50% 58%
     );
 
-    transform-origin:top center;
+    transform-origin:top;
 
-    transition:
-    transform 1.3s cubic-bezier(.22,1,.36,1);
+    transition:1s;
 
     z-index:6;
 }
 
 /* OTWARCIE */
 
+.envelope-wrapper.open{
+
+    overflow:visible;
+}
+
 .envelope-wrapper.open .envelope-flap{
 
-    transform:
-    rotateX(180deg);
+    transform:rotateX(180deg);
 }
 
 .envelope-wrapper.open .letter{
 
-    transform:
-    translateY(-120px)
-    scale(1.02);
+    transform:translateY(-140px);
 
     z-index:100;
 }
 
-/* Przycisk */
+/* PRZYCISK */
 
 #openBtn{
 
-    margin-top:50px;
+    margin-top:40px;
 
     border:none;
 
-    padding:16px 50px;
+    padding:16px 45px;
 
     border-radius:999px;
 
-    background:
-    linear-gradient(
-        135deg,
-        var(--sage),
-        var(--sage-dark)
-    );
+    background:#b6c2af;
 
     color:white;
 
-    font-size:1.1rem;
+    font-size:18px;
 
     cursor:pointer;
-
-    box-shadow:
-    0 15px 35px rgba(0,0,0,.12);
-
-    transition:.3s;
-
-    z-index:50;
 }
 
-#openBtn:hover{
-
-    transform:translateY(-3px);
-
-    box-shadow:
-    0 20px 40px rgba(216,180,106,.25);
-}
-
-/* Happy Birthday */
+/* HAPPY BIRTHDAY */
 
 .birthday{
 
-    margin-top:45px;
+    margin-top:40px;
 
-    color:var(--gold);
+    font-size:3rem;
 
-    font-size:clamp(
-        2.5rem,
-        5vw,
-        4rem
-    );
+    color:#d8b46a;
 
     opacity:0;
 
-    transform:translateY(25px);
-
     transition:1s;
-
-    z-index:40;
 }
 
 .birthday.show{
 
     opacity:1;
-
-    transform:translateY(0);
 }
-
-/* Efekty */
-
-#particles,
-#confetti,
-#balloons{
-
-    position:fixed;
-    inset:0;
-
-    pointer-events:none;
-}
-
-/* Mobile */
 
 @media(max-width:768px){
 
@@ -312,7 +226,6 @@ body{
         height:170px;
 
         left:40px;
-        top:80px;
     }
 
     .card-content h2{
@@ -324,9 +237,7 @@ body{
     }
 
     .birthday{
-
+        font-size:2rem;
         text-align:center;
-
-        padding:0 20px;
     }
 }
