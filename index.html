@@ -1,281 +1,56 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
 
-<style>
-
-:root{
-    --beige:#efe6db;
-    --beige-dark:#dbcab7;
-    --sage:#a8b49e;
-    --sage-dark:#677663;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    height:100vh;
-    overflow:hidden;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    font-family:Georgia, serif;
-    background:linear-gradient(
-        135deg,
-        #f5efe8,
-        #edf1e8
-    );
-}
-
-/* BALONY */
-
-.balloon{
-    position:absolute;
-    bottom:-150px;
-    width:70px;
-    height:90px;
-    border-radius:50%;
-    opacity:0;
-}
-
-.balloon::after{
-    content:"";
-    position:absolute;
-    width:1px;
-    height:80px;
-    background:#999;
-    left:50%;
-    top:85px;
-}
-
-.left{
-    left:5%;
-}
-
-.right{
-    right:5%;
-}
-
-.green{
-    background:#b7c4b1;
-}
-
-.beige{
-    background:#dfc8b3;
-}
-
-.white{
-    background:white;
-}
-
-.fly{
-    animation:flyUp 5s linear forwards;
-}
-
-@keyframes flyUp{
-    from{
-        transform:translateY(0);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-130vh);
-        opacity:1;
-    }
-}
-
-/* KOPERTA */
-
-.envelope-wrapper{
-    position:relative;
-    width:320px;
-    height:240px;
-}
-
-.letter{
-    position:absolute;
-    width:260px;
-    height:180px;
-    background:white;
-    left:30px;
-    top:40px;
-    border-radius:14px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-    color:var(--sage-dark);
-    font-size:32px;
-    z-index:1;
-    transition:1.2s;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.envelope{
-    position:absolute;
-    inset:0;
-    z-index:5;
-}
-
-.body{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:var(--beige-dark);
-    bottom:0;
-    border-radius:0 0 15px 15px;
-}
-
-.flap{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:#c8b59f;
-    clip-path:polygon(0 0,100% 0,50% 58%);
-    transform-origin:top;
-    transition:1.3s;
-    z-index:10;
-}
-
-.open .flap{
-    transform:rotateX(180deg);
-}
-
-.open .letter{
-    transform:translateY(-180px);
-}
-
-/* PRZYCISK */
-
-button{
-    margin-top:25px;
-    padding:18px 50px;
-    border:none;
-    border-radius:50px;
-    background:var(--sage);
-    color:white;
-    font-size:24px;
-    cursor:pointer;
-    box-shadow:0 4px 20px rgba(0,0,0,.1);
-}
-
-button:hover{
-    transform:scale(1.04);
-}
-
-h1{
-    margin-top:40px;
-    color:var(--sage-dark);
-    font-size:clamp(3rem,8vw,6rem);
-    opacity:0;
-    transition:1s;
-}
-
-.show{
-    opacity:1;
-}
-
-@media(max-width:700px){
-
-    .envelope-wrapper{
-        width:260px;
-        height:200px;
-    }
-
-    .letter{
-        width:210px;
-        left:25px;
-        font-size:24px;
-    }
-
-    button{
-        font-size:20px;
-        padding:15px 35px;
-    }
-}
-
-</style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- BALONY LEWA -->
+<div class="background-particles"></div>
 
-<div class="balloon left green" id="l1"></div>
-<div class="balloon left beige" id="l2" style="left:15%;"></div>
-<div class="balloon left white" id="l3" style="left:25%;"></div>
+<div class="scene">
 
-<!-- BALONY PRAWA -->
+    <div class="glow"></div>
 
-<div class="balloon right green" id="r1"></div>
-<div class="balloon right beige" id="r2" style="right:15%;"></div>
-<div class="balloon right white" id="r3" style="right:25%;"></div>
+    <div class="envelope-container" id="envelope">
 
-<div class="envelope-wrapper" id="envelope">
+        <div class="letter">
 
-    <div class="letter">
-        Wszystkiego<br>
-        najlepszego<br>
-        marudo! :)
+            <div class="letter-content">
+
+                <h2>Wszystkiego najlepszego<br>marudo! :)</h2>
+
+            </div>
+
+        </div>
+
+        <div class="envelope">
+
+            <div class="envelope-back"></div>
+
+            <div class="envelope-front"></div>
+
+            <div class="envelope-flap"></div>
+
+        </div>
+
     </div>
 
-    <div class="envelope">
+    <button id="openBtn">
+        Click!
+    </button>
 
-        <div class="body"></div>
-
-        <div class="flap"></div>
-
-    </div>
+    <h1 id="birthdayTitle">
+        Happy Birthday!
+    </h1>
 
 </div>
 
-<button onclick="openCard()">
-    Click!
-</button>
-
-<h1 id="birthday">
-    Happy Birthday!
-</h1>
-
-<script>
-
-function openCard(){
-
-    document
-        .getElementById("envelope")
-        .classList.add("open");
-
-    document
-        .getElementById("birthday")
-        .classList.add("show");
-
-    const balloons = [
-        "l1","l2","l3",
-        "r1","r2","r3"
-    ];
-
-    balloons.forEach((id,index)=>{
-
-        setTimeout(()=>{
-
-            document
-                .getElementById(id)
-                .classList.add("fly");
-
-        },index*250);
-
-    });
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
