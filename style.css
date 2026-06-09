@@ -217,28 +217,53 @@ body{
 
     .envelope-wrapper{
 
-        width:320px;
-        height:230px;
+        width:260px;
+        height:190px;
     }
 
     .letter{
 
-        width:240px;
-        height:170px;
+        width:200px;
+        height:140px;
 
-        left:40px;
+        left:30px;
+        top:150px;
+    }
+
+    .envelope-wrapper.open .letter{
+
+        transform:translateY(-150px);
+
+        z-index:100;
     }
 
     .card-content h2{
-        font-size:1.4rem;
+
+        font-size:1.1rem;
     }
 
     .card-content h3{
-        font-size:1.8rem;
+
+        font-size:1.5rem;
+    }
+
+    #openBtn{
+
+        margin-top:25px;
+
+        padding:14px 35px;
+
+        font-size:16px;
     }
 
     .birthday{
+
+        margin-top:25px;
+
         font-size:2rem;
+
         text-align:center;
+
+        padding:0 20px;
     }
 }
