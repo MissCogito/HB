@@ -1,9 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-<title>RESET</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday 🎂</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<h1>RESET DZIAŁA</h1>
+
+    <!-- Konfetti -->
+    <div id="confetti-container"></div>
+
+    <!-- Balony -->
+    <div id="balloons-container"></div>
+
+    <!-- Główna scena -->
+    <main class="scene">
+
+        <!-- Światło za kopertą -->
+        <div class="glow"></div>
+
+        <!-- Koperta -->
+        <div class="envelope-wrapper" id="envelope">
+
+            <!-- Kartka -->
+            <div class="letter">
+
+                <div class="letter-inner">
+
+                    <div class="letter-title">
+                        Wszystkiego najlepszego
+                    </div>
+
+                    <div class="letter-subtitle">
+                        marudo! :)
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Tył koperty -->
+            <div class="envelope-back"></div>
+
+            <!-- Przód koperty -->
+            <div class="envelope-front"></div>
+
+            <!-- Klapka -->
+            <div class="envelope-flap"></div>
+
+        </div>
+
+        <!-- Przycisk -->
+        <button id="openBtn" class="open-btn">
+            Click!
+        </button>
+
+        <!-- Napis końcowy -->
+        <div id="birthdayTitle" class="birthday-title">
+            Happy Birthday!
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
