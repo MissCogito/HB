@@ -1,71 +1,64 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday 🎂</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>Happy Birthday</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <!-- Konfetti -->
-    <div id="confetti-container"></div>
+<div id="particles"></div>
+<div id="confetti"></div>
+<div id="balloons"></div>
 
-    <!-- Balony -->
-    <div id="balloons-container"></div>
+<div class="scene">
 
-    <!-- Główna scena -->
-    <main class="scene">
+    <div class="light"></div>
 
-        <!-- Światło za kopertą -->
-        <div class="glow"></div>
+    <div class="envelope-wrapper" id="envelope">
 
-        <!-- Koperta -->
-        <div class="envelope-wrapper" id="envelope">
+        <div class="letter">
 
-            <!-- Kartka -->
-            <div class="letter">
+            <div class="card-content">
 
-                <div class="letter-inner">
+                <h2>
+                    Wszystkiego najlepszego
+                </h2>
 
-                    <div class="letter-title">
-                        Wszystkiego najlepszego
-                    </div>
-
-                    <div class="letter-subtitle">
-                        marudo! :)
-                    </div>
-
-                </div>
+                <h3>
+                    marudo! :)
+                </h3>
 
             </div>
 
-            <!-- Tył koperty -->
-            <div class="envelope-back"></div>
-
-            <!-- Przód koperty -->
-            <div class="envelope-front"></div>
-
-            <!-- Klapka -->
-            <div class="envelope-flap"></div>
-
         </div>
 
-        <!-- Przycisk -->
-        <button id="openBtn" class="open-btn">
-            Click!
-        </button>
+        <div class="envelope-back"></div>
 
-        <!-- Napis końcowy -->
-        <div id="birthdayTitle" class="birthday-title">
-            Happy Birthday!
-        </div>
+        <div class="envelope-front"></div>
 
-    </main>
+        <div class="envelope-flap"></div>
 
-    <script src="script.js"></script>
+    </div>
+
+    <button id="openBtn">
+        Click!
+    </button>
+
+    <div class="birthday" id="birthday">
+
+        Happy Birthday!
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
