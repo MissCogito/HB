@@ -200,6 +200,8 @@ body{
     transform:
     translateY(-320px)
     rotate(-2deg);
+
+    z-index:100;
 }
 
 /* BUTTON */
