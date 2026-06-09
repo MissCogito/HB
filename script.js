@@ -1,121 +1,187 @@
-const button = document.getElementById("openBtn");
+const openBtn = document.getElementById("openBtn");
 const envelope = document.getElementById("envelope");
-const title = document.getElementById("birthdayTitle");
+const birthday = document.getElementById("birthday");
 
 let opened = false;
 
-button.addEventListener("click", () => {
+openBtn.addEventListener("click", () => {
 
     if(opened) return;
+
     opened = true;
 
     envelope.classList.add("open");
 
     setTimeout(() => {
-        title.classList.add("show");
-    }, 1200);
+        birthday.classList.add("show");
+    }, 1000);
 
     createConfetti();
     createBalloons();
     createParticles();
 });
 
+/* KONFETTI */
+
 function createConfetti(){
 
+    const container =
+        document.getElementById("confetti");
+
     const colors = [
-        "#d4b06a",
-        "#efe7dc",
-        "#a9b7a3",
+        "#d7b36a",
+        "#b8c4b1",
+        "#f4eee7",
         "#ffffff"
     ];
 
-    for(let i=0;i<180;i++){
+    for(let i=0;i<140;i++){
 
-        const piece = document.createElement("div");
+        const piece =
+            document.createElement("div");
 
-        piece.style.position = "fixed";
-        piece.style.width = "8px";
-        piece.style.height = "14px";
+        piece.style.position="absolute";
 
-        piece.style.left =
-            Math.random() * window.innerWidth + "px";
+        piece.style.width="8px";
+        piece.style.height="14px";
 
-        piece.style.top = "-20px";
+        piece.style.left=
+            Math.random()*100+"vw";
 
-        piece.style.background =
-            colors[Math.floor(Math.random()*colors.length)];
+        piece.style.top="-20px";
 
-        piece.style.borderRadius = "2px";
+        piece.style.background=
+            colors[Math.floor(
+                Math.random()*colors.length
+            )];
 
-        piece.style.zIndex = "999";
+        piece.style.borderRadius="3px";
 
-        document.body.appendChild(piece);
+        container.appendChild(piece);
 
-        const duration = 4000 + Math.random()*3000;
+        const duration =
+            3000 + Math.random()*3000;
 
         piece.animate([
             {
                 transform:
-                `translate(0,0) rotate(0deg)`
+                "translateY(0) rotate(0deg)"
             },
             {
                 transform:
-                `translate(${(Math.random()-0.5)*300}px,
+                `translate(
+                ${(Math.random()-0.5)*300}px,
                 ${window.innerHeight+200}px)
                 rotate(${Math.random()*720}deg)`
             }
         ],{
             duration:duration,
-            easing:"cubic-bezier(.17,.67,.35,1)",
+            easing:"ease-out",
             fill:"forwards"
         });
-
-        setTimeout(()=>{
-            piece.remove();
-        },duration);
     }
 }
 
+/* BALONY */
+
 function createBalloons(){
+
+    const container =
+        document.getElementById("balloons");
 
     const colors = [
         "#d7c7b4",
-        "#a9b7a3",
+        "#b8c4b1",
         "#ffffff"
     ];
 
-    for(let i=0;i<16;i++){
+    for(let i=0;i<12;i++){
 
         const balloon =
             document.createElement("div");
 
-        balloon.style.position="fixed";
+        balloon.style.position="absolute";
 
-        balloon.style.width =
-            (50+Math.random()*30)+"px";
+        balloon.style.width=
+            60 + Math.random()*25 + "px";
 
-        balloon.style.height =
-            (70+Math.random()*40)+"px";
+        balloon.style.height=
+            80 + Math.random()*25 + "px";
 
         balloon.style.borderRadius="50%";
 
-        balloon.style.background =
-            colors[Math.floor(Math.random()*colors.length)];
-
-        balloon.style.bottom="-120px";
-
-        balloon.style.left=
-            Math.random()*window.innerWidth+"px";
-
-        balloon.style.zIndex="500";
+        balloon.style.background=
+            colors[Math.floor(
+                Math.random()*colors.length
+            )];
 
         balloon.style.boxShadow=
             "0 10px 25px rgba(0,0,0,.12)";
 
-        document.body.appendChild(balloon);
+        balloon.style.left=
+            Math.random()*100+"vw";
+
+        balloon.style.bottom="-150px";
+
+        /* połysk */
+
+        const shine =
+            document.createElement("div");
+
+        shine.style.position="absolute";
+        shine.style.width="20%";
+        shine.style.height="20%";
+        shine.style.left="20%";
+        shine.style.top="15%";
+
+        shine.style.background=
+            "rgba(255,255,255,.45)";
+
+        shine.style.borderRadius="50%";
+
+        balloon.appendChild(shine);
+
+        /* sznurek */
+
+        const string =
+            document.createElement("div");
+
+        string.style.position="absolute";
+        string.style.left="50%";
+        string.style.top="100%";
+
+        string.style.width="2px";
+        string.style.height="55px";
+
+        string.style.background=
+            "rgba(100,100,100,.4)";
+
+        balloon.appendChild(string);
+
+        /* serpentyna */
+
+        const ribbon =
+            document.createElement("div");
+
+        ribbon.style.position="absolute";
+
+        ribbon.style.left="50%";
+        ribbon.style.top="155%";
+
+        ribbon.style.width="18px";
+        ribbon.style.height="70px";
+
+        ribbon.style.borderLeft=
+            "2px solid #d7b36a";
+
+        ribbon.style.borderRadius="50%";
+
+        balloon.appendChild(ribbon);
+
+        container.appendChild(balloon);
 
         const duration =
-            8000 + Math.random()*4000;
+            9000 + Math.random()*4000;
 
         balloon.animate([
             {
@@ -124,8 +190,8 @@ function createBalloons(){
             {
                 transform:
                 `translate(
-                    ${(Math.random()-0.5)*200}px,
-                    -${window.innerHeight+300}px
+                    ${(Math.random()-0.5)*180}px,
+                    -${window.innerHeight+400}px
                 )`
             }
         ],{
@@ -133,44 +199,45 @@ function createBalloons(){
             easing:"linear",
             fill:"forwards"
         });
-
-        setTimeout(()=>{
-            balloon.remove();
-        },duration);
     }
 }
 
+/* DROBINKI */
+
 function createParticles(){
+
+    const container =
+        document.getElementById("particles");
 
     for(let i=0;i<40;i++){
 
-        const star =
+        const dot =
             document.createElement("div");
 
-        star.style.position="fixed";
-        star.style.width="4px";
-        star.style.height="4px";
-        star.style.borderRadius="50%";
+        dot.style.position="absolute";
 
-        star.style.background="#d4b06a";
+        dot.style.width="4px";
+        dot.style.height="4px";
 
-        star.style.left=
-            Math.random()*window.innerWidth+"px";
+        dot.style.borderRadius="50%";
 
-        star.style.top=
-            Math.random()*window.innerHeight+"px";
+        dot.style.background="#d7b36a";
 
-        star.style.opacity="0";
+        dot.style.left=
+            Math.random()*100+"vw";
 
-        document.body.appendChild(star);
+        dot.style.top=
+            Math.random()*100+"vh";
 
-        star.animate([
-            {opacity:0},
-            {opacity:1},
+        container.appendChild(dot);
+
+        dot.animate([
             {opacity:.2},
-            {opacity:1}
+            {opacity:1},
+            {opacity:.3}
         ],{
-            duration:2000+Math.random()*3000,
+            duration:
+            2000 + Math.random()*3000,
             iterations:Infinity
         });
     }
