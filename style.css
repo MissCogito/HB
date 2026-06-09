@@ -207,8 +207,8 @@ body{
 .envelope-wrapper.open .letter{
 
     transform:
-    translateY(-340px)
-    rotate(-2deg);
+    translateY(-120px)
+    scale(1.02);
 
     z-index:100;
 }
