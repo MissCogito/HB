@@ -167,7 +167,7 @@ body{
 
 .envelope-wrapper.open .letter{
 
-    transform:translateY(-140px);
+    transform:translateY(-230px);
 
     z-index:100;
 }
